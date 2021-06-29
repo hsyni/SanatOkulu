@@ -35,6 +35,7 @@ namespace SanatOkulu
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnIptal = new System.Windows.Forms.Button();
             this.pboYeniSanatci = new System.Windows.Forms.PictureBox();
             this.btnEkle = new System.Windows.Forms.Button();
             this.mtbYil = new System.Windows.Forms.MaskedTextBox();
@@ -65,6 +66,7 @@ namespace SanatOkulu
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnIptal);
             this.groupBox1.Controls.Add(this.pboYeniSanatci);
             this.groupBox1.Controls.Add(this.btnEkle);
             this.groupBox1.Controls.Add(this.mtbYil);
@@ -79,6 +81,17 @@ namespace SanatOkulu
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sanat Eseri";
+            // 
+            // btnIptal
+            // 
+            this.btnIptal.Location = new System.Drawing.Point(66, 242);
+            this.btnIptal.Name = "btnIptal";
+            this.btnIptal.Size = new System.Drawing.Size(75, 32);
+            this.btnIptal.TabIndex = 8;
+            this.btnIptal.Text = "İPTAL";
+            this.btnIptal.UseVisualStyleBackColor = true;
+            this.btnIptal.Visible = false;
+            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
             // 
             // pboYeniSanatci
             // 
@@ -155,6 +168,7 @@ namespace SanatOkulu
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvwEserler.FullRowSelect = true;
             this.lvwEserler.HideSelection = false;
             this.lvwEserler.Location = new System.Drawing.Point(302, 41);
             this.lvwEserler.Name = "lvwEserler";
@@ -162,6 +176,8 @@ namespace SanatOkulu
             this.lvwEserler.TabIndex = 2;
             this.lvwEserler.UseCompatibleStateImageBehavior = false;
             this.lvwEserler.View = System.Windows.Forms.View.Details;
+            this.lvwEserler.DoubleClick += new System.EventHandler(this.lvwEserler_DoubleClick);
+            this.lvwEserler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvwEserler_KeyDown);
             // 
             // columnHeader1
             // 
@@ -235,6 +251,7 @@ namespace SanatOkulu
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiSanatcilar;
+        private System.Windows.Forms.Button btnIptal;
     }
 }
 
