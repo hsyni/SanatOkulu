@@ -155,6 +155,7 @@ namespace SanatOkulu
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvwEserler.HideSelection = false;
             this.lvwEserler.Location = new System.Drawing.Point(302, 41);
             this.lvwEserler.Name = "lvwEserler";
             this.lvwEserler.Size = new System.Drawing.Size(568, 428);
@@ -192,6 +193,7 @@ namespace SanatOkulu
             this.tsmiSanatcilar.Name = "tsmiSanatcilar";
             this.tsmiSanatcilar.Size = new System.Drawing.Size(70, 20);
             this.tsmiSanatcilar.Text = "Sanatçılar";
+            this.tsmiSanatcilar.Click += new System.EventHandler(this.tsmiSanatcilar_Click);
             // 
             // Form1
             // 

@@ -32,11 +32,19 @@ namespace SanatOkulu
 
         private void pboYeniSanatci_Click(object sender, EventArgs e)
         {
+            SanatciFormuAc();
+        }
+        void SanatciFormuAc()
+        {
             var frm = new SanatciForm(db);
-            if (DialogResult.OK == frm.ShowDialog())
-            {
-                SanatcileriYukle();
-            }
+            frm.SanatcilarDegisti += Frm_SanatcilarDegisti;
+            frm.ShowDialog();
+        }
+
+        private void Frm_SanatcilarDegisti(object sender, EventArgs e)
+        {
+            EserleriListele();
+            SanatcileriYukle();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -59,7 +67,7 @@ namespace SanatOkulu
             {
                 Ad = ad,
                 SanatciId = (int)cboSanatci.SelectedValue,
-                Yil = Convert.ToInt32(mtbYil.Text)
+                Yil = mtbYil.Text == "" ? null as int? : Convert.ToInt32(mtbYil.Text)
 
             };
             db.Eserler.Add(eser);
@@ -87,6 +95,11 @@ namespace SanatOkulu
             mtbYil.Clear();
             cboSanatci.SelectedIndex = -1;
             txtAd.Focus();
+        }
+
+        private void tsmiSanatcilar_Click(object sender, EventArgs e)
+        {
+            SanatciFormuAc();
         }
     }
 }
