@@ -11,6 +11,7 @@ namespace SanatOkulu.Models
     {
         public SanatOkuluContext() : base("name=BaglantiCumlem")
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SanatOkuluContext>());
         }
 
         public DbSet<Sanatci> Sanatcilar { get; set; }
