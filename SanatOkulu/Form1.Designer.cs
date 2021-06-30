@@ -33,10 +33,11 @@ namespace SanatOkulu
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnIptal = new System.Windows.Forms.Button();
-            this.pboYeniSanatci = new System.Windows.Forms.PictureBox();
             this.btnEkle = new System.Windows.Forms.Button();
             this.mtbYil = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,11 +51,16 @@ namespace SanatOkulu
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiSanatcilar = new System.Windows.Forms.ToolStripMenuItem();
             this.ofdResim = new System.Windows.Forms.OpenFileDialog();
+            this.cboGorunum = new System.Windows.Forms.ComboBox();
+            this.cmsEserler = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.tsmiResmiYeniPenceredeAc = new System.Windows.Forms.ToolStripMenuItem();
+            this.pboYeniSanatci = new System.Windows.Forms.PictureBox();
             this.pboResim = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.cmsEserler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboResim)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +94,16 @@ namespace SanatOkulu
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sanat Eseri";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(46, 231);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(199, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "(Resmi değiştirmek için üzerine tıklayınız.)";
+            // 
             // btnIptal
             // 
             this.btnIptal.Location = new System.Drawing.Point(84, 417);
@@ -98,18 +114,6 @@ namespace SanatOkulu
             this.btnIptal.UseVisualStyleBackColor = true;
             this.btnIptal.Visible = false;
             this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
-            // 
-            // pboYeniSanatci
-            // 
-            this.pboYeniSanatci.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pboYeniSanatci.Image = global::SanatOkulu.Properties.Resources.plus;
-            this.pboYeniSanatci.Location = new System.Drawing.Point(250, 323);
-            this.pboYeniSanatci.Name = "pboYeniSanatci";
-            this.pboYeniSanatci.Size = new System.Drawing.Size(28, 28);
-            this.pboYeniSanatci.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboYeniSanatci.TabIndex = 7;
-            this.pboYeniSanatci.TabStop = false;
-            this.pboYeniSanatci.Click += new System.EventHandler(this.pboYeniSanatci_Click);
             // 
             // btnEkle
             // 
@@ -177,14 +181,15 @@ namespace SanatOkulu
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvwEserler.ContextMenuStrip = this.cmsEserler;
             this.lvwEserler.FullRowSelect = true;
             this.lvwEserler.HideSelection = false;
-            this.lvwEserler.Location = new System.Drawing.Point(302, 41);
+            this.lvwEserler.Location = new System.Drawing.Point(302, 61);
             this.lvwEserler.Name = "lvwEserler";
-            this.lvwEserler.Size = new System.Drawing.Size(568, 428);
+            this.lvwEserler.Size = new System.Drawing.Size(568, 408);
             this.lvwEserler.TabIndex = 2;
             this.lvwEserler.UseCompatibleStateImageBehavior = false;
-            this.lvwEserler.View = System.Windows.Forms.View.Details;
+            this.lvwEserler.View = System.Windows.Forms.View.Tile;
             this.lvwEserler.DoubleClick += new System.EventHandler(this.lvwEserler_DoubleClick);
             this.lvwEserler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvwEserler_KeyDown);
             // 
@@ -220,6 +225,61 @@ namespace SanatOkulu
             this.tsmiSanatcilar.Text = "Sanatçılar";
             this.tsmiSanatcilar.Click += new System.EventHandler(this.tsmiSanatcilar_Click);
             // 
+            // cboGorunum
+            // 
+            this.cboGorunum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboGorunum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGorunum.FormattingEnabled = true;
+            this.cboGorunum.Items.AddRange(new object[] {
+            "Büyük Simgeler",
+            "Küçük Simgeler",
+            "Listele",
+            "Ayrıntılar",
+            "Döşemeler"});
+            this.cboGorunum.Location = new System.Drawing.Point(733, 27);
+            this.cboGorunum.Name = "cboGorunum";
+            this.cboGorunum.Size = new System.Drawing.Size(121, 28);
+            this.cboGorunum.TabIndex = 4;
+            this.cboGorunum.SelectedIndexChanged += new System.EventHandler(this.cboGorunum_SelectedIndexChanged);
+            // 
+            // cmsEserler
+            // 
+            this.cmsEserler.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiResmiYeniPenceredeAc});
+            this.cmsEserler.Name = "cms";
+            this.cmsEserler.Size = new System.Drawing.Size(207, 48);
+            this.cmsEserler.Opening += new System.ComponentModel.CancelEventHandler(this.cmsEserler_Opening);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(650, 30);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Görünüm";
+            // 
+            // tsmiResmiYeniPenceredeAc
+            // 
+            this.tsmiResmiYeniPenceredeAc.Name = "tsmiResmiYeniPenceredeAc";
+            this.tsmiResmiYeniPenceredeAc.Size = new System.Drawing.Size(206, 22);
+            this.tsmiResmiYeniPenceredeAc.Text = "Resmi Yeni Pencerede Aç";
+            this.tsmiResmiYeniPenceredeAc.Click += new System.EventHandler(this.tsmiResmiYeniPenceredeAc_Click);
+            // 
+            // pboYeniSanatci
+            // 
+            this.pboYeniSanatci.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pboYeniSanatci.Image = global::SanatOkulu.Properties.Resources.plus;
+            this.pboYeniSanatci.Location = new System.Drawing.Point(250, 323);
+            this.pboYeniSanatci.Name = "pboYeniSanatci";
+            this.pboYeniSanatci.Size = new System.Drawing.Size(28, 28);
+            this.pboYeniSanatci.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboYeniSanatci.TabIndex = 7;
+            this.pboYeniSanatci.TabStop = false;
+            this.pboYeniSanatci.Click += new System.EventHandler(this.pboYeniSanatci_Click);
+            // 
             // pboResim
             // 
             this.pboResim.BackColor = System.Drawing.Color.Gainsboro;
@@ -232,21 +292,13 @@ namespace SanatOkulu
             this.pboResim.TabStop = false;
             this.pboResim.Click += new System.EventHandler(this.pboResim_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(46, 231);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "(Resmi değiştirmek için üzerine tıklayınız.)";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 481);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cboGorunum);
             this.Controls.Add(this.lvwEserler);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -257,9 +309,10 @@ namespace SanatOkulu
             this.Text = "Sanat Okulu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.cmsEserler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pboYeniSanatci)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -287,6 +340,10 @@ namespace SanatOkulu
         private System.Windows.Forms.PictureBox pboResim;
         private System.Windows.Forms.OpenFileDialog ofdResim;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboGorunum;
+        private System.Windows.Forms.ContextMenuStrip cmsEserler;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripMenuItem tsmiResmiYeniPenceredeAc;
     }
 }
 
